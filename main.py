@@ -49,6 +49,8 @@ if count < 10:
 else:
     print("Use less than 10 attempts to access the secret.")
 
+input("\nPress ENTER to exit")
+
 
 
 
