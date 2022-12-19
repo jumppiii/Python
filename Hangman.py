@@ -1,70 +1,62 @@
-# imports
 import random
 import os
+import base64
 
-# Graveyard for used letters. Graveyard.append(Letter)
+EncodedFlag = "JHtBbGNoZW15T2ZTb3VscyF9"
+
 Graveyard = []
 
-# New letter function
+Wordlist = ['apple', 'tomato', 'church', 'keyboard', 'mouse', 'internet', 'pokemon', 'korea', 'browser', 'programming', 'gaming', 'screen', 'phonebook',
+            'wallet', 'eternity', 'tattoo', 'painting', 'driving', 'porsche', 'mercedes', 'switch', 'playstation', 'javascript', 'dictionary', 'hacking',
+            'pattern', 'thought', 'breeze', 'sunshine', 'psycho']
 
-def new_letter():
-
-    os.system("cls")
-    print(Word)
-    print("Here's the word: " + BlankWord + "\n")
-    LetterString = str(input("Enter a letter to start guessing: "))
-    print("\n\n")
-    str(Graveyard.append(LetterString))
-    graveyardstring =' '
-    for letters in Graveyard:
-        graveyardstring += ' ' + letters
-    print("Purgatory: " + graveyardstring)
-
-
-# Clear screen
-os.system("cls")
-
-# Array with words
-Wordlist = ['apple', 'tomato', 'church', 'sonofabich']
-
-# Attempt counter
 Count = 0
 
-# Choose random word from array
 Word = random.choice(Wordlist)
-print(Word)
 
-# Creates the BlankWord
 LetterLength = len(Word)
 BlankWord = LetterLength * "*"
 
-# Prints the blank word
-print("Here's the word: " + BlankWord + "\n")
-
-# Reads input
-# LetterString = str(input("Enter a letter to start guessing: "))
-
-# Starts a while loop
 while BlankWord != Word:
-    LetterString = "test"
-    new_letter()
+    if Count < 10:
+        os.system("cls")
+        CountStr = str(Count)
+        print("Attempt(s): " + CountStr + "\n\n")
+        GraveyardString =''
 
-    if LetterString in Word:
-        LetterPosition = ([pos for pos, char in enumerate(Word) if char == LetterString])
-        for number in LetterPosition:
-            BlankWord = BlankWord[:number] + LetterString + BlankWord[number + 1:]
-            print(BlankWord)
-        #    print("Here's the word: " + BlankWord + "\n")
-        #    LetterString = input("Enter a new letter: ")
-        #    print("\n\n\n" + Graveyard)
+        for letters in Graveyard:
+            GraveyardString += ' ' + letters
 
+        print("Purgatory:" + GraveyardString)
+        print("\n\nHere's the word: " + BlankWord + "\n")
+        LetterString = str(input("\nEnter a letter: "))
+        print("\n\n")
+        str(Graveyard.append(LetterString))
+
+        if LetterString in Word:
+            LetterPosition = ([pos for pos, char in enumerate(Word) if char == LetterString])
+            for number in LetterPosition:
+                BlankWord = BlankWord[:number] + LetterString + BlankWord[number + 1:]
+
+        else:
+            Count = Count + 1
     else:
-        print("Not Found")
-        Graveyard.append(LetterString)
-        Count + 1
-        print(Graveyard)
+        break
 
 
+if Count <= 2:
+    os.system("cls")
+    DecodedFlag = base64.b64decode(EncodedFlag).decode('utf-8')
+    print("You've unlocked the secret flag!\n\nHere's your flag: " + DecodedFlag)
+    input("\nPress ENTER to continue..")
 
+elif Count < 10:
+    os.system("cls")
+    print("Congratulations, you solved the hangman in " + CountStr + " attempt(s)!\n")
+    print("Solve it with a maximum of 2 mistakes to unlock the secret")
+    input("\nPress ENTER to continue..")
 
-
+elif Count >= 10:
+    os.system("cls")
+    print("You died, the word was " + Word + "")
+    input("\n\nPress ENTER to continue..")
