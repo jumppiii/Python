@@ -69,7 +69,7 @@ def send_email():
 
     msg = MIMEMultipart()
     msg['From'] = 'BarrelDuty@dnb.no'
-    recipients = ['dominic.james.cleary.de.vibe@dnb.no, terje.olsen@dnb.no']
+    recipients = ['dominic.james.cleary.de.vibe@dnb.no', 'terje.olsen@dnb.no']
     msg['To'] = ", ".join(recipients)
     msg['Subject'] = 'Barrel Duty week ' + week_number
     message = 'Barrel Duty' \
