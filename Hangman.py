@@ -8,7 +8,7 @@ Graveyard = []
 
 Wordlist = ['apple', 'tomato', 'church', 'keyboard', 'mouse', 'internet', 'pokemon', 'korea', 'browser', 'programming', 'gaming', 'screen', 'phonebook',
             'wallet', 'eternity', 'tattoo', 'painting', 'driving', 'porsche', 'mercedes', 'switch', 'playstation', 'javascript', 'dictionary', 'hacking',
-            'pattern', 'thought', 'breeze', 'sunshine', 'psycho']
+            'pattern', 'thought', 'breeze', 'sunshine', 'psycho', 'sonofabich']
 
 Count = 0
 
@@ -58,5 +58,5 @@ elif Count < 10:
 
 elif Count >= 10:
     os.system("cls")
-    print("You died, the word was " + Word + "")
-    input("\n\nPress ENTER to continue..")
+    print("You died, the word was " + Word + ".")
+    input("\nPress ENTER to continue..")
