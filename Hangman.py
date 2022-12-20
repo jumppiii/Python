@@ -110,6 +110,11 @@ while BlankWord != Word:
         print(display_hangman(count))
         LetterString = str(input("\nEnter a letter: "))
         LetterString = LetterString.lower()
+        LetterString = LetterString[0]
+        while LetterString in GraveyardString:
+            LetterString = str(input("\nYou've already tried that, enter a new letter: "))
+            LetterString = LetterString.lower()
+            LetterString = LetterString[0]
         print("\n\n")
         str(Graveyard.append(LetterString))
 
@@ -122,7 +127,6 @@ while BlankWord != Word:
             count = count - 1
     else:
         break
-
 
 if count >= 4:
     os.system("cls")
