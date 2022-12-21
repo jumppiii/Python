@@ -8,10 +8,10 @@ def dice_roll():
     os.system("cls")
     count = 0
 
-    dice_number = str(input("How many die do you want to roll?\n Enter a number: "))
+    dice_number = str(input("How many die do you want to roll?\n\nEnter a number: "))
 
     while not dice_number.isdigit():
-        dice_number = str(input("\n That's not a number. Try again: "))
+        dice_number = str(input("\nThat's not a number. Try again: "))
 
     dice_number = int(dice_number)
 
@@ -24,12 +24,13 @@ def dice_roll():
 
     if dice_number >= 10000:
         decoded_flag = base64.b64decode(flag).decode('utf-8')
-        print("\n Pushing the limits, nice. The flag is: " + decoded_flag)
+        print("\nPushing the limits, nice. The flag is: " + decoded_flag)
 
 
 def try_again():
     tryagain = str(input("\nDo you want to roll the dice again? Y/N: "))
     tryagain = tryagain.upper()
+    tryagain = tryagain[0]
     if tryagain == "N":
         exit()
     elif tryagain == "Y":
