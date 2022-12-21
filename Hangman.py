@@ -3,6 +3,7 @@ import os
 import base64
 
 
+# creates the different stages of the hangman
 def display_hangman(count):
     stages = [  # final state: head, torso, both arms, and both legs
                 """
@@ -90,11 +91,14 @@ Wordlist = ['apple', 'tomato', 'church', 'keyboard', 'mouse', 'internet', 'pokem
             'javascript', 'dictionary', 'hacking',
             'pattern', 'thought', 'breeze', 'sunshine', 'psycho', 'sonofabich']
 
+# chooses a random word from the wordlist
 Word = random.choice(Wordlist)
 
+# creates a blank word with the same length as Word
 LetterLength = len(Word)
 BlankWord = LetterLength * "*"
 
+# run this as long as the BlankWord is not equal to Word
 while BlankWord != Word:
     if count > 0:
         os.system("cls")
@@ -112,12 +116,13 @@ while BlankWord != Word:
         LetterString = LetterString.lower()
         LetterString = LetterString[0]
         while LetterString in GraveyardString:
-            LetterString = str(input("\nYou've already tried that, enter a new letter: "))
+            LetterString = str(input("\n\nYou've already tried that, enter a new letter: "))
             LetterString = LetterString.lower()
             LetterString = LetterString[0]
         print("\n\n")
         str(Graveyard.append(LetterString))
 
+        # replaces stars in BlankWord with the entered letter if it is correct
         if LetterString in Word:
             LetterPosition = ([pos for pos, char in enumerate(Word) if char == LetterString])
             for number in LetterPosition:
@@ -128,18 +133,21 @@ while BlankWord != Word:
     else:
         break
 
+# prints the secret if the user has 4 or more lives left
 if count >= 4:
     os.system("cls")
     DecodedFlag = base64.b64decode(EncodedFlag).decode('utf-8')
     print("You've unlocked the secret flag!\n\nHere's your flag: " + DecodedFlag)
     input("\nPress ENTER to continue..")
 
+# prints the winning screen if the user didn't die
 elif count > 0:
     os.system("cls")
     print("Congratulations, you solved the hangman with " + countStr + " lives left! The word was: " + Word + "\n")
     print("Solve it with a maximum of 2 mistakes to unlock the secret")
     input("\nPress ENTER to continue..")
 
+# prints the losing screen if the user died
 elif count >= 0:
     os.system("cls")
     print("You died, the word was: " + Word + ".")
