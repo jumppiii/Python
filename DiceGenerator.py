@@ -3,8 +3,13 @@ import os
 import base64
 
 
-def dice_roll():
+def flag_decoder():
     flag = "JHtMaXF1aWRBcmVDaG9rZXJzfQ=="
+    decoded_flag = base64.b64decode(flag).decode('utf-8')
+    print("\nPushing the limits, nice. The flag is: " + decoded_flag)
+
+
+def dice_roll():
     os.system("cls")
     count = 0
 
@@ -23,8 +28,7 @@ def dice_roll():
         print("\nDice " + count_string + " rolled: " + random_number_string)
 
     if dice_number >= 10000:
-        decoded_flag = base64.b64decode(flag).decode('utf-8')
-        print("\nPushing the limits, nice. The flag is: " + decoded_flag)
+        flag_decoder()
 
 
 def try_again():
