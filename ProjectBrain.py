@@ -226,11 +226,11 @@ def mill_seven_five():
 
 
 def main():
-    thread1 = threading.Thread(target=zero(0, 250000))
+    thread1 = threading.Thread(target=zero, args=(0, 250000))
     thread2 = threading.Thread(target=two_five())
     thread3 = threading.Thread(target=five())
     thread4 = threading.Thread(target=seven_five())
-    thread5 = threading.Thread(target=mill(1000000, 1250000))
+    thread5 = threading.Thread(target=mill, args=(1000000, 1250000))
     thread6 = threading.Thread(target=mill_two_five())
     thread7 = threading.Thread(target=mill_five())
     thread8 = threading.Thread(target=mill_seven_five())
@@ -244,7 +244,8 @@ def main():
     thread7.start()
     thread8.start()
 
-    print(threading.activeCount())
+    thread1.join()
+    thread5.join()
 
 
 main()
