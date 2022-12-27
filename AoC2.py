@@ -1,13 +1,5 @@
 matches = open("ABC.txt", "r")
 
-a = "rock"
-b = "paper"
-c = "scissors"
-
-x = "rock"
-y = "paper"
-z = "scissors"
-
 rock = 1
 paper = 2
 scissors = 3
