@@ -1,36 +1,38 @@
-# Loop testing
-# for number in range(1000):
-#    print(number)
-# LetterPosition = []
-import os
-os.system('cls')
-# Array or string that contains the word
-mystring = "sonofabich"
+file = open("numbers.txt", "r")
 
-# Counts length of word and creates a blank word
-LetterLength = len(mystring)
-BlankWord = LetterLength * "*"
-print("Here's the word: " + BlankWord + "\n")
+count = 0
 
-# Reads input
-Letter = str(input("Enter a letter: "))
+for line in file:
+    first_elf = line[:line.index(",")]
+    first_elf_first_room = first_elf.split("-")[0]
+    first_elf_second_room = first_elf.split("-")[1]
+    # print(first_elf_first_room)
+    # print(first_elf_second_room)
+    # print(first_elf)
 
-# Reads position of letters from input and matches with
-LetterPosition = ([pos for pos, char in enumerate(mystring) if char == Letter])
-# LetterPosition.append([pos for pos, char in enumerate(mystring) if char == Letter])
-print(LetterPosition)
+    second_elf = line[line.index(",")::]
+    second_elf = second_elf.split(",")[1]
+    second_elf_first_room = second_elf.split("-")[0]
+    second_elf_second_room = second_elf.split("-")[1]
+    # print("gon be 96", second_elf_second_room)
 
-for number in LetterPosition:
+    a = int(first_elf_first_room)
+    b = int(first_elf_second_room)
+    x = int(second_elf_first_room)
+    y = int(second_elf_second_room)
 
-    BlankWord = BlankWord[:number] + Letter + BlankWord[number+1:]
+    if a >= x and b <= y:
+        count += 1
+        print(first_elf, second_elf)
 
-os.system('cls')
-print("Here's the word: " + BlankWord + "\n")
-input("Enter a new letter: ")
+    elif x >= a and y <= b:
+        count += 1
+        print(first_elf, second_elf)
 
+    else:
+        for num in range(a, b):
+            if num == x or y:
+                count += 1
+                continue
 
-
-
-# LetterPosition.append([pos for pos, char in enumerate(mystring) if char == Letter])
-# print(LetterPosition)
-# LetterPosition = LetterPosition.astype(int)
+print("Count:", count)
