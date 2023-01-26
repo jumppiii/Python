@@ -19,7 +19,7 @@ for entry in file:
     left = ":"
     right = ","
 
-    urls = "https://api.contexto.me/machado/en/game/128/" + entry
+    urls = "https://api.contexto.me/machado/en/game/130/" + entry
     url = urls[:-1]
 
     response = requests.get(url, headers=user_agent, verify=False)
